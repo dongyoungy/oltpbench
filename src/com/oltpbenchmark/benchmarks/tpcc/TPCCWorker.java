@@ -34,6 +34,7 @@ import com.oltpbenchmark.api.TransactionType;
 import com.oltpbenchmark.api.Worker;
 import com.oltpbenchmark.benchmarks.tpcc.procedures.Delivery;
 import com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrder;
+import com.oltpbenchmark.benchmarks.tpcc.procedures.NewOrderLock;
 import com.oltpbenchmark.benchmarks.tpcc.procedures.OrderStatus;
 import com.oltpbenchmark.benchmarks.tpcc.procedures.Payment;
 import com.oltpbenchmark.benchmarks.tpcc.procedures.StockLevel;
@@ -65,7 +66,7 @@ public class TPCCWorker extends Worker {
 			SimplePrinter errorOutputArea, int numWarehouses)
 			throws SQLException {
 		super(benchmarkModule, terminalId.getAndIncrement());
-		
+
 		this.terminalName = terminalName;
 
 		this.terminalWarehouseID = terminalWarehouseID;
@@ -105,7 +106,7 @@ public class TPCCWorker extends Worker {
 //	 * Rolls back the current transaction, then rethrows e if it is not a
 //	 * serialization error. Serialization errors are exceptions caused by
 //	 * deadlock detection, lock wait timeout, or similar.
-//	 * 
+//	 *
 //	 * @param e
 //	 *            Exception to check if it is a serialization error.
 //	 * @throws SQLException
